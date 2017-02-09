@@ -25,4 +25,15 @@
     <string name="titleimagedetail">\'Todo copas en la playa\'</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis ligula velit, a commodo risus viverra id. Sed id urna nec sapien posuere tincidunt et a lorem. Donec tempor eros sagittis metus pulvinar feugiat. Pellentesque ornare et tortor vel vulputate. Integer dolor erat, convallis a gravida eget, feugiat at diam. In semper egestas ante, varius aliquam velit cursus id. Donec ut velit a diam convallis ullamcorper eget ut orci. Aenean pharetra porttitor leo eget auctor. Pellentesque vel ornare erat. Phasellus ut lectus eu arcu luctus rutrum non ut dui. Ut finibus vitae nisl eget pellentesque.</string>
     <string name="transtionname_picture">transitionnamepicture</string>
+    <string name="tomar_foto">Tomar foto</string>
+    <string name="new_post_title">Nuevo Post</string>
+    <string name="validation_email_create_acount">Debe ingresar una dirección de correo</string>
+    <string name="validation_pass_and_confirm_create_acount">Debe ingresar un password y su confirmación</string>
+    <string name="validation_pass_and_confirm_create_acount_no_match">La contraseña y su confirmación no coinciden</string>
+    <string name="error_creating_account_on_firebase">No se puede crear el usuario en la plataforma</string>
+    <string name="login_fields_empty_message">Debe ingresar los datos de acceso</string>
+    <string name="error_sing_in_on_firebase">No puede ingresar a la app error de firebase</string>
+
+    <string name="facebook_app_id">1231205686958962</string>
+    <string name="fb_login_protocol_scheme">fb1231205686958962</string>
 </resources>

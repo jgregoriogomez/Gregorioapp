@@ -1,0 +1,36 @@
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gregorio.gregorioapp.views.fragments.NewPostFragment"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/actionbar_toolbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivPicture"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_fragment_new_post_image_view"
+            android:layout_weight="9"
+            android:background="@color/backgroundtext_card"
+            android:scaleType="centerCrop"
+            />
+
+        <Button
+            android:id="@+id/btnTakePicture"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_fragment_new_post_image_view"
+            android:layout_weight="1"
+            android:text="@string/tomar_foto"
+            />
+
+
+        
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

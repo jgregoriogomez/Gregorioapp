@@ -33,5 +33,7 @@
     <dimen name="margintop_usernametoolbarprofile">-100dp</dimen>
     <dimen name="limitY_usernametoolbarprofile">-250dp</dimen>
     <dimen name="margintoptargety_usernametoolbarprofile">-5dp</dimen>
+    <dimen name="height_fragment_new_post_image_view">0dp</dimen>
+
 
 </resources>

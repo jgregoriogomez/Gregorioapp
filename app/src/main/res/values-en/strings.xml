@@ -18,5 +18,14 @@
     <string name="tab_search">Search</string>
     <string name="tab_home">Home</string>
     <string name="tab_profile">Me</string>
-    <string name="secondword_detail">Me Gusta</string>
+    <string name="secondword_detail">I like it</string>
+    <string name="tomar_foto">Take picture</string>
+    <string name="new_post_title">New Post</string>
+    <string name="validation_email_create_acount">Debe ingresar una dirección de correo</string>
+    <string name="validation_pass_and_confirm_create_acount">Debe ingresar un password y su confirmación</string>
+    <string name="validation_pass_and_confirm_create_acount_no_match">La contraseña y su confirmación no coinciden</string>
+    <string name="error_creating_account_on_firebase">No se puede crear el usuario en la plataforma</string>
+    <string name="login_fields_empty_message">Debe ingresar los datos de acceso</string>
+    <string name="error_sing_in_on_firebase">No puede ingresar a la app error de firebase</string>
+
 </resources>

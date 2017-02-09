@@ -1,15 +1,18 @@
 package com.example.gregorio.gregorioapp.views;
 
+import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.gregorio.gregorioapp.LoginActivity;
 import com.example.gregorio.gregorioapp.R;
 import com.example.gregorio.gregorioapp.views.fragments.HomeFragment;
 import com.example.gregorio.gregorioapp.views.fragments.ProfileFragment;
 import com.example.gregorio.gregorioapp.views.fragments.SearchFragment;
+import com.facebook.AccessToken;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -19,6 +22,10 @@ public class ContainerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
+
+        if(AccessToken.getCurrentAccessToken()==null){
+            getLoginScreen();
+        }
 
         BottomBar bottomBar = (BottomBar) this.findViewById(R.id.bottombar);
         bottomBar.setDefaultTab(R.id.home);
@@ -48,5 +55,12 @@ public class ContainerActivity extends AppCompatActivity {
                         .addToBackStack(null).commit();
             }
         });
+    }
+
+    private void getLoginScreen() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK |
+            Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
