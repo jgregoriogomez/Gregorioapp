@@ -18,6 +18,7 @@
     <string name="tab_search">Search</string>
     <string name="tab_home">Home</string>
     <string name="tab_profile">Me</string>
+    <string name="tab_logout">Logout</string>
     <string name="secondword_detail">I like it</string>
     <string name="tomar_foto">Take picture</string>
     <string name="new_post_title">New Post</string>
@@ -27,5 +28,7 @@
     <string name="error_creating_account_on_firebase">No se puede crear el usuario en la plataforma</string>
     <string name="login_fields_empty_message">Debe ingresar los datos de acceso</string>
     <string name="error_sing_in_on_firebase">No puede ingresar a la app error de firebase</string>
+    <string name="cancel_facebook_login">Se cancela el ingreso vía facebook</string>
+    <string name="error_facebook_login">error tratando de ingresar con facebook</string>
 
 </resources>

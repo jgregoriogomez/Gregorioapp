@@ -18,4 +18,10 @@
         barColorWhenSelected="@color/colorPrimary"
         icon="@drawable/ic_user"
         />
+    <tab
+        id="@+id/logout"
+        title="@string/tab_logout"
+        barColorWhenSelected="@color/colorPrimary"
+        icon="@drawable/ic_exit"
+        />
 </tabs>
