@@ -29,6 +29,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -41,9 +42,9 @@ public class LoginActivity extends AppCompatActivity {
     // es necesario crear un callbackmanager
     private CallbackManager callbackManager;
 
-    //private FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth;
 
-    //private FirebaseAuth.AuthStateListener authStateListener;
+    private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +62,31 @@ public class LoginActivity extends AppCompatActivity {
 
         btnLoginFacebook.setReadPermissions("email");//TODO probar comentando esta instrucción
 
+        //implementación de firebase para ingreso con facebook o con email
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    goContainer();
+                }
+            }
+        };
         setButtonLoginFacebookBehavior(btnLoginFacebook);
-        //setButtonloginWithMailBehavior(btnloginWithMail, textInputUserName, TextInputPass);
+        setButtonloginWithMailBehavior(btnloginWithMail, textInputUserName, TextInputPass);
+
     }
 
     private void setButtonloginWithMailBehavior(final Button btnloginWithMail,
                                                 final TextInputEditText textInputUserName,
                                                 final TextInputEditText TextInputPass){
         //implementación de login usando correo y password a traves de firebase
-        /*btnloginWithMail.setOnClickListener(new View.OnClickListener() {
+        btnloginWithMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth = FirebaseAuth.getInstance();
+
                 String user = textInputUserName.getText().toString().trim();
                 String pass = TextInputPass.getText().toString().trim();
 
@@ -102,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
             }
-        });*/
+        });
         //goContainer();
     }
 
@@ -132,8 +146,18 @@ public class LoginActivity extends AppCompatActivity {
     private void singInWithFacebook(AccessToken accessToken) {
         //Codigo basico para implementar autenticación con facebook
         AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
-        goContainer();
-
+        firebaseAuth.signInWithCredential(authCredential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(!task.isSuccessful()){
+                    //error de autenticacion
+                    Toast.makeText(getApplicationContext(),
+                            R.string.error_facebook_login_with_firebase,
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     //este metodo es necesario para implementar la autenticación en facebook
@@ -146,15 +170,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        /*if(authStateListener != null){
+        if(authStateListener != null){
             firebaseAuth.removeAuthStateListener(authStateListener);
-        }*/
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        //firebaseAuth.addAuthStateListener(authStateListener);
+        firebaseAuth.addAuthStateListener(authStateListener);
     }
 
     public void goCreateAccount(View view){

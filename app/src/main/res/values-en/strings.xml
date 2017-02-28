@@ -30,5 +30,6 @@
     <string name="error_sing_in_on_firebase">No puede ingresar a la app error de firebase</string>
     <string name="cancel_facebook_login">Se cancela el ingreso vía facebook</string>
     <string name="error_facebook_login">error tratando de ingresar con facebook</string>
+    <string name="error_facebook_login_with_firebase">Error iniciando sesión en facebook con firebase</string>
 
 </resources>

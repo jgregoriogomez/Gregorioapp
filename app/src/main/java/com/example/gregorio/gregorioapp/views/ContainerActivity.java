@@ -6,15 +6,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.gregorio.gregorioapp.LoginActivity;
 import com.example.gregorio.gregorioapp.R;
 import com.example.gregorio.gregorioapp.views.fragments.HomeFragment;
 import com.example.gregorio.gregorioapp.views.fragments.ProfileFragment;
 import com.example.gregorio.gregorioapp.views.fragments.SearchFragment;
-import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -25,9 +25,14 @@ public class ContainerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
 
-        //eliminine por un momento el login con firebase descomentar para usar firebase
-        if(AccessToken.getCurrentAccessToken()==null){
-            getLoginScreen();
+        //esto valida que sea un usuario valido en facebook
+        /*if(AccessToken.getCurrentAccessToken()==null){
+            goLoginScreen();
+        }*/
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null){
+            goLoginScreen();
         }
 
         BottomBar bottomBar = (BottomBar) this.findViewById(R.id.bottombar);
@@ -63,7 +68,7 @@ public class ContainerActivity extends AppCompatActivity {
         });
     }
 
-    private void getLoginScreen() {
+    private void goLoginScreen() {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK |
             Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -71,7 +76,8 @@ public class ContainerActivity extends AppCompatActivity {
     }
     
     public void logout(){
+        FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
-        getLoginScreen();
+        goLoginScreen();
     }
 }

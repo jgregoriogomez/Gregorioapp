@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import com.example.gregorio.gregorioapp.Model.Picture;
 import com.example.gregorio.gregorioapp.R;
 import com.example.gregorio.gregorioapp.adapter.PictureAdapterRecyclerView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -57,6 +59,11 @@ public class HomeFragment extends Fragment {
                         .addToBackStack(null).commit();
             }
         });
+        //TODO añadir datos del usuario logeado
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null){
+
+        }
         return view;
     }
 
