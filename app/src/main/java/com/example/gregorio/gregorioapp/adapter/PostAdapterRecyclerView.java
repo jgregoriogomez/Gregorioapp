@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.gregorio.gregorioapp.model.Picture;
 import com.example.gregorio.gregorioapp.R;
+import com.example.gregorio.gregorioapp.model.Picture;
+import com.example.gregorio.gregorioapp.model.Post;
 import com.example.gregorio.gregorioapp.views.PictureDetailsActivity;
 import com.squareup.picasso.Picasso;
 
@@ -24,14 +26,14 @@ import java.util.ArrayList;
  * Created by Gregorio on 03/12/2016.
  */
 
-public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdapterRecyclerView.PictureViewHolder> {
+public class PostAdapterRecyclerView extends RecyclerView.Adapter<PostAdapterRecyclerView.PictureViewHolder> {
 
-    private ArrayList<Picture> pictures;
+    private ArrayList<Post> posts;
     private int resource;
     private Activity activity;
 
-    public PictureAdapterRecyclerView(ArrayList<Picture> pictures, int resource, Activity activity) {
-        this.pictures = pictures;
+    public PostAdapterRecyclerView(ArrayList<Post> posts, int resource, Activity activity) {
+        this.posts = posts;
         this.resource = resource;
         this.activity = activity;
     }
@@ -42,13 +44,21 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
         return new PictureViewHolder(view);
     }
 
+   private static String getRelativeTimeStamp(double timeStampCreated){
+        return DateUtils.getRelativeTimeSpanString((long)timeStampCreated,
+                System.currentTimeMillis(),DateUtils.SECOND_IN_MILLIS,
+                DateUtils.FORMAT_ABBREV_WEEKDAY).toString();
+    }
+
     @Override
     public void onBindViewHolder(PictureViewHolder holder, int position) {
-        Picture picture = pictures.get(position);
-        holder.userNameCard.setText(picture.getUserName());
-        holder.timeCard.setText(picture.getTime());
-        holder.likeNumberCard.setText(picture.getLikeNumber());
-        Picasso.with(activity).load(picture.getPicture()).into(holder.pictureCard);
+        Post post= posts.get(position);
+        holder.userNameCard.setText(post.getAuthor());
+
+        //holder.timeCard.setText(String.valueOf(post.getRelativeTimeStamp()));
+        holder.timeCard.setText(getRelativeTimeStamp(post.getTimeStampCreated()));
+        holder.likeNumberCard.setText("5");
+        Picasso.with(activity).load(post.getImageUrl()).into(holder.pictureCard);
 
         holder.pictureCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +81,7 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
 
     @Override
     public int getItemCount() {
-        return pictures.size();
+        return posts.size();
     }
 
     public class PictureViewHolder extends RecyclerView.ViewHolder{

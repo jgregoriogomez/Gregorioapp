@@ -1,4 +1,4 @@
-package com.example.gregorio.gregorioapp.Model;
+package com.example.gregorio.gregorioapp.model;
 
 /**
  * Created by Gregorio on 03/12/2016.

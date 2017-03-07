@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dgreenhalgh.android.simpleitemdecoration.grid.GridDividerItemDecoration;
-import com.example.gregorio.gregorioapp.Model.Picture;
+import com.example.gregorio.gregorioapp.model.Picture;
 import com.example.gregorio.gregorioapp.R;
 import com.example.gregorio.gregorioapp.adapter.PictureAdapterRecyclerView;
 

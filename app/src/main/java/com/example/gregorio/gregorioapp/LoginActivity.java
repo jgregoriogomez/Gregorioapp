@@ -1,6 +1,7 @@
 package com.example.gregorio.gregorioapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -69,6 +70,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+                SharedPreferences.Editor sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE).edit();
+                //sharedPreferences.putString("email", user.getEmail());
+                sharedPreferences.commit();
                 if(user != null){
                     goContainer();
                 }

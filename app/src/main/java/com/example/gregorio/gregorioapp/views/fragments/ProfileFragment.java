@@ -10,10 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.example.gregorio.gregorioapp.Model.Picture;
+import com.example.gregorio.gregorioapp.model.Picture;
 import com.example.gregorio.gregorioapp.R;
 import com.example.gregorio.gregorioapp.adapter.PictureAdapterRecyclerView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -33,7 +36,10 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        RecyclerView pictureRecycler = (RecyclerView) view.findViewById(R.id.pictureProfileRecycler);
+        RecyclerView pictureRecycler = (RecyclerView) view
+                .findViewById(R.id.pictureProfileRecycler);
+
+        TextView userNameText = (TextView)view.findViewById(R.id.userNameProfile);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -41,10 +47,20 @@ public class ProfileFragment extends Fragment {
         pictureRecycler.setLayoutManager(linearLayoutManager);
 
         PictureAdapterRecyclerView pictureAdapterRecyclerView = new
-                PictureAdapterRecyclerView(buildPictures(),R.layout.cardview_picture,getActivity());
+                PictureAdapterRecyclerView(buildPictures(),R.layout
+                .cardview_picture,getActivity());
 
         pictureRecycler.setAdapter(pictureAdapterRecyclerView);
         showToolbar(null,false,view);
+
+        //TODO añadir datos del usuario logeado
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null){
+            userNameText.setText(user.getEmail());
+        }else{
+            //userNameText.setText(getContext().getResources().getString(R.string.username_card));
+        }
+
         return view;
     }
 

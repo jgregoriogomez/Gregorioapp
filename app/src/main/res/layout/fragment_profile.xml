@@ -40,7 +40,6 @@
                     android:id="@+id/userNameProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/username_card"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/textsize_usernameprofile"
                     />
@@ -62,23 +61,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="@dimen/dimen_circle_imageprofile"
-        android:layout_height="@dimen/dimen_circle_imageprofile"
-        android:src="@drawable/image"
-        android:layout_gravity="center|top"
-        android:layout_marginTop="@dimen/margintop_circleimageprofile"
-        android:elevation="@dimen/elevation_circleimageprofile"
-        app:layout_behavior="com.zoonref.SimpleViewBehavior"
-        app:dependsOn="@+id/appBarProfile"
-        app:dependType="y"
-        app:dependTargetY="@dimen/limitY_circleimage"
-        app:targetX="@dimen/activity_vertical_margin"
-        app:targetY="@dimen/margintoptoolbar_circleimageprofile"
-        app:targetWidth="@dimen/width_circleimagetoolbar"
-        app:targetHeight="@dimen/width_circleimagetoolbar"
-        />
-        <TextView
+    <TextView
             android:id="@+id/usernameToolbarProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,4 +80,21 @@
             app:targetX="@dimen/activity_vertical_margin"
             app:targetAlpha="1"
             />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/dimen_circle_imageprofile"
+        android:layout_height="@dimen/dimen_circle_imageprofile"
+        android:src="@drawable/image"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="@dimen/margintop_circleimageprofile"
+        android:elevation="@dimen/elevation_circleimageprofile"
+        app:layout_behavior="com.zoonref.SimpleViewBehavior"
+        app:dependsOn="@+id/appBarProfile"
+        app:dependType="y"
+        app:dependTargetY="@dimen/limitY_circleimage"
+        app:targetX="@dimen/activity_vertical_margin"
+        app:targetY="@dimen/margintoptoolbar_circleimageprofile"
+        app:targetWidth="@dimen/width_circleimagetoolbar"
+        app:targetHeight="@dimen/width_circleimagetoolbar"
+        />
 </android.support.design.widget.CoordinatorLayout>

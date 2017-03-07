@@ -40,4 +40,6 @@
     <string name="cancel_facebook_login">Se cancela el ingreso vía facebook</string>
     <string name="error_facebook_login">Error tratando de ingresar con facebook</string>
     <string name="error_facebook_login_with_firebase">Error iniciando sesión en facebook con firebase</string>
+    <string name="error_upload_image_to_firebase">Error subiendo la imagen a firebase</string>
+    <string name="new_post_error_create_file">error creando el archivo de imagen</string>
 </resources>
